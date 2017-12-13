@@ -5,3 +5,6 @@
 #### It focuses on offensive players and stores goals and assits over the last 5 years for all players from the 10 main European leagues.
 
 #### The parsing is done hierarchically with a tree fashion leagues -> teams -> players. The output is stoed in csv format.
+
+
+![](TablePicture.png)

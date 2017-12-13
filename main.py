@@ -7,13 +7,12 @@ import re
 import pandas as pd
 from time import time, sleep
 from league import League
-import pickle
 
 N_LEAGUES = 10 #keeping the top N leagues
 LEAGUES_URL = "https://www.transfermarkt.co.uk/wettbewerbe/europa/wettbewerbe"
 BASE_URL = "https://www.transfermarkt.co.uk"
 
-DELAY_BETWEEN_QUERIES = 0 #min number of seconds spacing http queries
+DELAY_BETWEEN_QUERIES = 0 #min delay in seconds spacing http queries
 class PageScrapper():
     def __init__(self ):
         self.opener = urllib.request.build_opener()
@@ -45,7 +44,7 @@ if __name__ == "__main__":
 	with open("out.dat", "wb") as f:
 		pickle.dump( LeaguesData, f)
 
-	#flattening all players information to pandas.DataFrame
+	#flattening all players information to pandas.DataFrame and exporting to csv
 	PlayerProfiles = [player.PlayerData for league in LeaguesData for team in league.TeamsData for player in team.PlayersData]
 	df = pd.DataFrame( PlayerProfiles)
 	df.to_csv("StrikerPerformance.csv", index=False)
