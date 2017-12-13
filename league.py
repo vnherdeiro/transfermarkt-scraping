@@ -1,8 +1,4 @@
-import urllib
-from bs4 import BeautifulSoup as bs
 import re
-import pandas as pd
-from time import time, sleep
 from team import Team
 
 BASE_URL = "https://www.transfermarkt.co.uk"

@@ -1,13 +1,3 @@
-
-# coding: utf-8
-
-# In[1]:
-
-
-import urllib
-from bs4 import BeautifulSoup as bs
-import re
-import pandas as pd
 from player import PlayerProfile
 
 BASE_URL = "https://www.transfermarkt.co.uk"

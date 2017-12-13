@@ -1,8 +1,6 @@
-import urllib
 from bs4 import BeautifulSoup as bs
 import re
 import pandas as pd
-from time import time, sleep
 
 CURRENT_YEAR = 17
 N_SEASON_HISTORY = 5
