@@ -15,7 +15,6 @@ def readRow( row):
 	goals_scored = cells[6]
 	assists = cells[7]
 	minutes_played = cells[-1]
-	#year, _, _ , _, games_played, _, goals_scored, asists, _, minutes_played = map(lambda x : x.text.strip(), cells)
 	games_played = int(games_played) if games_played != "-" else 0
 	goals_scored = int(goals_scored) if goals_scored != "-" else 0
 	assists = int(assists) if assists != "-" else 0
