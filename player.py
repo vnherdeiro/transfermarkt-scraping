@@ -19,7 +19,7 @@ def readRow( row):
 	goals_scored = int(goals_scored) if goals_scored != "-" else 0
 	assists = int(assists) if assists != "-" else 0
 	minutes_played = int( minutes_played[:-1].replace(".","")) if minutes_played != "-" else 0
-	return year, games_played, goals_scored, assists, minutes_played
+	return [year, games_played, goals_scored, assists, minutes_played]
 
 
 class PlayerProfile:
@@ -65,7 +65,8 @@ class PlayerProfile:
 			if re.match( "\d{4}", year):
 				year = int( year[2:])
 				year = "%02d/%02d" %(year-1, year)
-			if not re.match( "\d{2}/\d{2}", year):
+				rowContents[0] = year
+			if not re.match( "\d{2}\/\d{2}", year):
 				raise ValueError("Wrong format for played year")
 			if int( year[:2]) < CURRENT_YEAR - N_SEASON_HISTORY:
 				break
