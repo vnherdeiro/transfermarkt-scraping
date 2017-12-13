@@ -28,10 +28,10 @@ class Team:
 		#self.PlayerData = [PlayerProfile( playerUrl, scrapper) for playerUrl in offensivePlayersUrls]
 		self.PlayersData = []
 		for playerUrl in offensivePlayersUrls:
-			#try:
-			NewPlayerProfile = PlayerProfile( playerUrl, scrapper)
-			NewPlayerProfile.PlayerData["current league"] = self.LeagueName
-			self.PlayersData.append( NewPlayerProfile)
-			#except:
-			#	continue
+			try:
+				NewPlayerProfile = PlayerProfile( playerUrl, scrapper)
+				NewPlayerProfile.PlayerData["current league"] = self.LeagueName
+				self.PlayersData.append( NewPlayerProfile)
+			except:
+				continue
 

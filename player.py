@@ -51,7 +51,7 @@ class PlayerProfile:
 		if "age" in playerAttributes:
 			playerAttributes["age"] = int( playerAttributes["age"])
 
-		#scrapping performance page information -- TODO => add scrapping of national team performance
+		#scrapping performance page information
 		soup = pageScrapper(urlPerfPage)
 		performanceColumns = ("season", "games", "goals", "assists", "minutes")
 		performanceRows = pd.DataFrame( {col:[] for col in performanceColumns})
