@@ -15,4 +15,3 @@ class League:
 		teamUrls = teamsTable.find_all("a", class_="vereinprofil_tooltip", id=re.compile("\d+"))[::2]
 		teamUrls = [BASE_URL + teamUrl["href"] for teamUrl in teamUrls]
 		self.TeamsData = [ Team(teamUrl, self.LeagueName, scrapper) for teamUrl in teamUrls]
-

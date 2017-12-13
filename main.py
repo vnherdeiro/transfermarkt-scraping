@@ -38,7 +38,6 @@ if __name__ == "__main__":
 	Leagues = LeagueTables.find_all("a", href=re.compile("wettbewerb/[A-Z]{2}1"), title=re.compile("\w"))
 	Leagues = Leagues[:N_LEAGUES]
 	LeagueUrlDic = { league.text : BASE_URL + league["href"] for league in Leagues}
-	print( LeagueUrlDic )
 	LeaguesData = []
 	for leagueName, leagueUrl in LeagueUrlDic.items():
 		print( "Scrapping the %s..." %leagueName)
@@ -50,4 +49,3 @@ if __name__ == "__main__":
 	PlayerProfiles = [player.PlayerData for league in LeaguesData for team in league.TeamsData for player in team.PlayersData]
 	df = pd.DataFrame( PlayerProfiles)
 	df.to_csv("StrikerPerformance.csv", index=False)
-	print( LeaguesData)
