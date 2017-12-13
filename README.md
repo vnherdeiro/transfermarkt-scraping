@@ -6,5 +6,7 @@
 
 #### The parsing is done hierarchically with a tree fashion leagues -> teams -> players. The output is stoed in csv format.
 
+#### Shared on (Kaggle)[https://www.kaggle.com/gimunu/football-striker-performance].
+
 
 ![](TablePicture.png)
