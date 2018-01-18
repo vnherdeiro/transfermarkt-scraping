@@ -8,7 +8,7 @@ import pandas as pd
 from time import time, sleep
 from league import League
 
-N_LEAGUES = 1 #keeping the top N leagues
+N_LEAGUES = 10 #keeping the top N leagues
 LEAGUES_URL = "https://www.transfermarkt.co.uk/wettbewerbe/europa/wettbewerbe"
 BASE_URL = "https://www.transfermarkt.co.uk"
 
