@@ -8,7 +8,7 @@ import pandas as pd
 from time import time, sleep
 from league import League
 
-N_LEAGUES = 10 #keeping the top N leagues
+N_LEAGUES = 1 #keeping the top N leagues
 LEAGUES_URL = "https://www.transfermarkt.co.uk/wettbewerbe/europa/wettbewerbe"
 BASE_URL = "https://www.transfermarkt.co.uk"
 
@@ -41,8 +41,6 @@ if __name__ == "__main__":
 	for leagueName, leagueUrl in LeagueUrlDic.items():
 		print( "Scrapping the %s..." %leagueName)
 		LeaguesData.append( League( leagueName, leagueUrl, scrapper))
-	with open("out.dat", "wb") as f:
-		pickle.dump( LeaguesData, f)
 
 	#flattening all players information to pandas.DataFrame and exporting to csv
 	PlayerProfiles = [player.PlayerData for league in LeaguesData for team in league.TeamsData for player in team.PlayersData]
