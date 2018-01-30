@@ -1,4 +1,4 @@
-# transfermarkt.co.uk scrapping
+# transfermarkt.co.uk scraping
 
 ### This script aims at collecting performance information on football players from the website [transfermarkt.co.uk](www.transfermarkt.co.uk).
 

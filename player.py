@@ -7,13 +7,13 @@ N_SEASON_HISTORY = 5
 
 
 class PlayerProfile:
-	def __init__(self, playerUrl, pageScrapper):
+	def __init__(self, playerUrl, pageScraper):
 		urlPerfPage = playerUrl.replace("profil","leistungsdatendetails")
-		soup = pageScrapper( playerUrl)
+		soup = pageScraper( playerUrl)
 
 		playerAttributes = {}
 
-		#scrapping profile page information
+		#scraping profile page information
 		playerAttributes["name"] = soup.find("div", class_="dataMain").find("h1").text
 		StoredAttributes = ["Age:", "Height:", "Nationality:", "Position:", "Foot:", "Current club:"]
 		for entry in soup.find("table", class_="auflistung").find_all("th"):
@@ -34,8 +34,8 @@ class PlayerProfile:
 		if "age" in playerAttributes:
 			playerAttributes["age"] = int( playerAttributes["age"])
 
-		#scrapping performance page information
-		soup = pageScrapper(urlPerfPage)
+		#scraping performance page information
+		soup = pageScraper(urlPerfPage)
 		performanceColumns = ("season", "games", "goals", "assists", "minutes")
 		performanceRows = pd.DataFrame( {col:[] for col in performanceColumns})
 		for row in soup.find("div", class_="responsive-table").find("tbody").find_all("tr"):

@@ -13,7 +13,7 @@ LEAGUES_URL = "https://www.transfermarkt.co.uk/wettbewerbe/europa/wettbewerbe"
 BASE_URL = "https://www.transfermarkt.co.uk"
 
 DELAY_BETWEEN_QUERIES = 0 #min delay in seconds spacing http queries
-class PageScrapper():
+class PageScraper():
     def __init__(self ):
         self.opener = urllib.request.build_opener()
         self.opener.addheaders = [('User-agent', 'Mozilla/5.0')]
@@ -31,16 +31,16 @@ class PageScrapper():
 
 
 if __name__ == "__main__":
-	scrapper = PageScrapper()
-	soup = scrapper( LEAGUES_URL)
+	scraper = PageScraper()
+	soup = scraper( LEAGUES_URL)
 	LeagueTables = soup.find("table", class_="items").find("tbody")
 	Leagues = LeagueTables.find_all("a", href=re.compile("wettbewerb/[A-Z]{2}1"), title=re.compile("\w"))
 	Leagues = Leagues[:N_LEAGUES]
 	LeagueUrlDic = { league.text : BASE_URL + league["href"] for league in Leagues}
 	LeaguesData = []
 	for leagueName, leagueUrl in LeagueUrlDic.items():
-		print( "Scrapping the %s..." %leagueName)
-		LeaguesData.append( League( leagueName, leagueUrl, scrapper))
+		print( "Scraping the %s..." %leagueName)
+		LeaguesData.append( League( leagueName, leagueUrl, scraper))
 
 	#flattening all players information to pandas.DataFrame and exporting to csv
 	PlayerProfiles = [player.PlayerData for league in LeaguesData for team in league.TeamsData for player in team.PlayersData]
